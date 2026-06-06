@@ -91,6 +91,7 @@ function renderPages() {
     node.querySelector(".month-name").textContent = entry.month;
     node.querySelector(".month-subtitle").textContent = entry.subtitle;
     node.querySelector(".poem").textContent = entry.poem;
+    node.querySelector(".poem-preview").textContent = entry.poem;
     node.addEventListener("click", () => setPage(index + 1));
     pageStack.appendChild(node);
   });

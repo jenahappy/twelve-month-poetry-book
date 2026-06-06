@@ -162,20 +162,31 @@ body {
 }
 
 .month-subtitle {
-  margin: 0;
+  margin: 0 0 26px;
   line-height: 1.8;
   font-size: 1rem;
 }
 
 .poem {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100%;
+  display: block;
   gap: 14px;
   line-height: 1.95;
   font-size: 1rem;
   white-space: pre-line;
+}
+
+.poem-preview {
+  padding-top: 24px;
+  border-top: 1px solid rgba(44, 36, 29, 0.14);
+  color: rgba(44, 36, 29, 0.92);
+}
+
+.poem-label {
+  margin: 0 0 20px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: rgba(44, 36, 29, 0.54);
 }
 
 .nav-button {
