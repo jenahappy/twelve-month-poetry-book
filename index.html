@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>열두 달의 시집</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="library">
+    <header class="hero">
+      <p class="eyebrow">interactive poetry collection</p>
+      <h1>열두 달의 시집</h1>
+      <p class="intro">
+        계절이 바뀌는 속도를 따라 1월부터 12월까지 한 장씩 넘겨 읽는 시집입니다.
+        카드를 클릭하거나 좌우 버튼을 눌러 다음 달로 이동하세요.
+      </p>
+    </header>
+
+    <section class="book-shell" aria-label="월별 시집">
+      <button class="nav-button prev" type="button" aria-label="이전 달">‹</button>
+
+      <article class="book" id="book">
+        <div class="page-cover">
+          <span>Poetry Archive</span>
+          <strong>January to December</strong>
+        </div>
+        <div class="page-stack" id="pageStack"></div>
+      </article>
+
+      <button class="nav-button next" type="button" aria-label="다음 달">›</button>
+    </section>
+
+    <section class="caption-panel">
+      <div>
+        <p class="caption-label">current month</p>
+        <h2 id="monthTitle">1월</h2>
+      </div>
+      <p id="monthMeta" class="caption-meta">겨울의 첫 문장</p>
+    </section>
+  </main>
+
+  <template id="pageTemplate">
+    <section class="page">
+      <div class="page-face page-front">
+        <p class="month-kicker"></p>
+        <h3 class="month-name"></h3>
+        <p class="month-subtitle"></p>
+      </div>
+      <div class="page-face page-back">
+        <div class="poem"></div>
+      </div>
+    </section>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
