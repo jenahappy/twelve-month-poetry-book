@@ -108,41 +108,21 @@ body {
   perspective: 2200px;
 }
 
-.page {
+.page-display {
   position: absolute;
-  inset: 0;
-  transform-origin: left center;
-  transform-style: preserve-3d;
-  transition: transform 0.9s cubic-bezier(.65, .05, .36, 1);
-  cursor: pointer;
-}
-
-.page.is-turned {
-  transform: rotateY(-180deg);
-}
-
-.page-face {
-  position: absolute;
-  inset: 18px;
+  top: 18px;
+  right: 18px;
+  bottom: 18px;
+  left: calc(50% + 6px);
+  padding: 42px 34px;
   border-radius: 18px;
-  backface-visibility: hidden;
   background: var(--paper);
   box-shadow: inset 0 0 0 1px rgba(93, 67, 45, 0.14);
+  overflow: auto;
 }
 
-.page-front,
-.page-back {
-  width: calc(50% - 18px);
-  padding: 42px 34px;
-}
-
-.page-front {
-  left: calc(50% - 6px);
-}
-
-.page-back {
-  left: 12px;
-  transform: rotateY(180deg);
+.page-display.is-changing {
+  animation: pageFade 0.35s ease;
 }
 
 .month-kicker,
@@ -167,26 +147,25 @@ body {
   font-size: 1rem;
 }
 
-.poem {
-  display: block;
-  gap: 14px;
+.poem-display {
+  padding-top: 24px;
+  border-top: 1px solid rgba(44, 36, 29, 0.14);
   line-height: 1.95;
   font-size: 1rem;
   white-space: pre-line;
-}
-
-.poem-preview {
-  padding-top: 24px;
-  border-top: 1px solid rgba(44, 36, 29, 0.14);
   color: rgba(44, 36, 29, 0.92);
 }
 
-.poem-label {
-  margin: 0 0 20px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  font-size: 0.72rem;
-  color: rgba(44, 36, 29, 0.54);
+@keyframes pageFade {
+  from {
+    opacity: 0.45;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .nav-button {
@@ -240,8 +219,7 @@ body {
   }
 
   .page-cover,
-  .page-front,
-  .page-back {
+  .page-display {
     width: auto;
     left: 18px;
     right: 18px;
@@ -251,9 +229,9 @@ body {
     inset: 18px;
   }
 
-  .page-front,
-  .page-back {
-    inset: 18px;
+  .page-display {
+    top: 18px;
+    bottom: 18px;
   }
 }
 
@@ -266,8 +244,7 @@ body {
     height: 680px;
   }
 
-  .page-front,
-  .page-back,
+  .page-display,
   .page-cover {
     padding: 30px 22px;
   }

@@ -28,7 +28,12 @@
           <span>Poetry Archive</span>
           <strong>January to December</strong>
         </div>
-        <div class="page-stack" id="pageStack"></div>
+        <section class="page-display" id="pageDisplay" aria-live="polite">
+          <p class="month-kicker" id="pageNumber"></p>
+          <h3 class="month-name" id="pageMonth"></h3>
+          <p class="month-subtitle" id="pageSubtitle"></p>
+          <div class="poem-display" id="pagePoem"></div>
+        </section>
       </article>
 
       <button class="nav-button next" type="button" aria-label="다음 달">›</button>
@@ -42,21 +47,6 @@
       <p id="monthMeta" class="caption-meta">겨울의 첫 문장</p>
     </section>
   </main>
-
-  <template id="pageTemplate">
-    <section class="page">
-      <div class="page-face page-front">
-        <p class="month-kicker"></p>
-        <h3 class="month-name"></h3>
-        <p class="month-subtitle"></p>
-        <div class="poem poem-preview"></div>
-      </div>
-      <div class="page-face page-back">
-        <p class="poem-label">poem</p>
-        <div class="poem"></div>
-      </div>
-    </section>
-  </template>
 
   <script src="script.js"></script>
 </body>

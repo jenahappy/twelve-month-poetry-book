@@ -73,8 +73,11 @@ const poems = [
   }
 ];
 
-const pageStack = document.getElementById("pageStack");
-const pageTemplate = document.getElementById("pageTemplate");
+const pageDisplay = document.getElementById("pageDisplay");
+const pageNumber = document.getElementById("pageNumber");
+const pageMonth = document.getElementById("pageMonth");
+const pageSubtitle = document.getElementById("pageSubtitle");
+const pagePoem = document.getElementById("pagePoem");
 const monthTitle = document.getElementById("monthTitle");
 const monthMeta = document.getElementById("monthMeta");
 const prevButton = document.querySelector(".prev");
@@ -82,34 +85,26 @@ const nextButton = document.querySelector(".next");
 
 let currentIndex = 0;
 
-function renderPages() {
-  poems.forEach((entry, index) => {
-    const node = pageTemplate.content.firstElementChild.cloneNode(true);
-    node.style.zIndex = poems.length - index;
-    node.dataset.index = index;
-    node.querySelector(".month-kicker").textContent = `${String(index + 1).padStart(2, "0")} / 12`;
-    node.querySelector(".month-name").textContent = entry.month;
-    node.querySelector(".month-subtitle").textContent = entry.subtitle;
-    node.querySelector(".poem").textContent = entry.poem;
-    node.querySelector(".poem-preview").textContent = entry.poem;
-    node.addEventListener("click", () => setPage(index + 1));
-    pageStack.appendChild(node);
-  });
-}
-
 function updateCaption() {
-  const current = poems[Math.min(currentIndex, poems.length - 1)];
+  const current = poems[currentIndex];
   monthTitle.textContent = current.month;
   monthMeta.textContent = current.meta;
 }
 
+function renderCurrentPage() {
+  const current = poems[currentIndex];
+  pageNumber.textContent = `${String(currentIndex + 1).padStart(2, "0")} / 12`;
+  pageMonth.textContent = current.month;
+  pageSubtitle.textContent = current.subtitle;
+  pagePoem.textContent = current.poem;
+  pageDisplay.classList.remove("is-changing");
+  void pageDisplay.offsetWidth;
+  pageDisplay.classList.add("is-changing");
+}
+
 function setPage(target) {
   currentIndex = Math.max(0, Math.min(target, poems.length - 1));
-
-  [...pageStack.children].forEach((page, index) => {
-    page.classList.toggle("is-turned", index < currentIndex);
-  });
-
+  renderCurrentPage();
   updateCaption();
 }
 
@@ -121,5 +116,4 @@ window.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight") setPage(currentIndex + 1);
 });
 
-renderPages();
 setPage(0);
